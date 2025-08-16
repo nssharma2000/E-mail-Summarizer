@@ -1,0 +1,4 @@
+John: Our efficiency has increased by 30%.
+Steve: That is good. We have hired another person for development.
+John: How is he doing?
+Steve: He is doing well. It's because of him that our deployment speed has increased by 20%.
