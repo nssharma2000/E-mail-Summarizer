@@ -44,11 +44,9 @@ app.post("/send_email", async (req, res) => {
   try {
     const { summary, recipients } = req.body;
 
-    console.log(recipients)
-
     const data = await resend.emails.send({
       from: "onboarding@resend.dev", 
-      to: recipients, 
+      to: recipients,
       subject: "Meeting Summary",
       html: `<p>${summary}</p>`,
     });

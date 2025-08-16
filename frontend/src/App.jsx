@@ -13,6 +13,8 @@ function App() {
 
   const [recipients, setRecipients] = useState("")
 
+  const backendUrl = import .meta.env.BACKEND_URL
+
   
 
 
@@ -51,7 +53,7 @@ function App() {
               return
             }
 
-            const response = await fetch('http://localhost:3001/summarize', {
+            const response = await fetch(backendUrl + "/summarize", {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'
@@ -82,15 +84,13 @@ function App() {
               return
             }
 
-            const response = await fetch('http://localhost:3001/send_email', {
+            const response = await fetch(backendUrl + "/send_email", {
               method: 'POST',
               headers: {
                 'Content-Type': 'application/json'
               },
-              body: JSON.stringify({ summary, recipients: recipients.split(",").map(email => email.trim()).join(',') })
+              body: JSON.stringify({ summary, recipients: recipients.split(",").map(email => email.trim()) })
             })
-
-            console.log(response)
           }}
           >Send mail</button>
         </div>
