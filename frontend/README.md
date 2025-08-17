@@ -1,12 +1,51 @@
-# React + Vite
+# E-mail Summarizer App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Approach
 
-Currently, two official plugins are available:
+I used an input element to upload text files for transcripts. The app reads its contents. I used Groq SDK to summarize transcripts. I created an endpoint that takes content and prompt and uses Groq SDK to summarize transcripts. I used Resend to send mails to e-mail addresses (comma-separated) entered in a text area element. I created an endpoint for it.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Process
 
-## Expanding the ESLint configuration
+### Backend Setup
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Created an Express.js backend to handle email sending.
+
+2. Used Resend API for reliable email delivery.
+
+3. Implemented a POST /send_email endpoint that takes:
+
+   •summary: Meeting summary text.
+   •recipients: Array of email addresses.
+
+The endpoint calls resend.emails.send() and sends the summary to all recipients.
+
+### Deployment
+
+The app is deployed on Render (backend) and Vercel (frontend).
+
+Environment variables (API key) are stored securely.
+
+## Tech Stack
+
+**Frontend**: React
+**Backend**: Node.js, Express.js
+**E-mail Service**: Resend
+**Deployment**: Render and Vercel
+
+## Setup
+
+### Frontend
+
+```
+cd frontend
+npm run dev
+```
+
+### Backend
+
+```
+cd backend
+node index.js
+```
+
+Deployed Link:
